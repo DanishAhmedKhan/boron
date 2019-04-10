@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('mongoose');
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const _ = require('lodash');
@@ -59,3 +59,5 @@ const login = async (req, res) => {
 
 router.post('/signup', signup);
 router.post('/login', login);
+
+module.exports = router;

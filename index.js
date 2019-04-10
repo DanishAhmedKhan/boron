@@ -4,13 +4,15 @@ const cors = require('cors');
 const ip = require('ip');
 const mongoose = require('mongoose');
 const path = require('path');
+const morgan = require('morgan');
+const config = require('config');
+const helmet = require('helmet');
 
 const app = express();
 const env = app.get('env');
 const ipAddress = ip.address();
 console.log(`Trying to start Boron server at ${ipAddress} (in ${env} mode)...`);
 
-app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
@@ -30,6 +32,7 @@ app.use('/api/user', userApi);
 
 
 // website
+app.set('view engine', 'ejs');
 const routes = require('./routes/index');
 app.get('/', routes.home);
 

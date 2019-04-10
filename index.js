@@ -3,16 +3,19 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const ip = require('ip');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const app = express();
 const env = app.get('env');
 const ipAddress = ip.address();
 console.log(`Trying to start Boron server at ${ipAddress} (in ${env} mode)...`);
 
+app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(morgan('tiny'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 if (env == 'development') {
 } else if (env == 'testing') {
@@ -20,10 +23,16 @@ if (env == 'development') {
     app.use(helmet());
 }
 
-
+// api end points
 const userApi = require('./api/user');
 
 app.use('/api/user', userApi);
+
+
+// website
+const routes = require('./routes/index');
+app.get('/', routes.home);
+
 
 
 const dbUrl = config.get('server.db');

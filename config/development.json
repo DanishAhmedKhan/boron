@@ -1,0 +1,7 @@
+{
+    "name": "Boron Development",
+    "server": {
+        "port": "4000",
+        "db": "mongodb://localhost/boron_dev"
+    }
+}

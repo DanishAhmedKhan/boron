@@ -2,6 +2,6 @@
     "name": "Boront",
     "server": {
         "port": "8080",
-        "db": "mongodb+srv://AhmerRaza:<password>@cluster0-xcxab.mongodb.net/test?retryWrites=true"
+        "db": "mongodb+srv://AhmerRaza:kk_blastOff@cluster0-xcxab.mongodb.net/test?retryWrites=true"
     }
 }

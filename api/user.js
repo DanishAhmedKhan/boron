@@ -16,7 +16,6 @@ const signup = async (req, res) => {
         password: Joi.string().min(5).max(50).required(),
     });
     if (error) {
-        res.session.error = error.details[0].message; 
         return res.redirect('/');
     }
 
@@ -28,6 +27,8 @@ const signup = async (req, res) => {
 
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
+
+    user.online = true;
 
     const newUser = new User(user);
     newUser.save();
@@ -47,17 +48,29 @@ const login = async (req, res) => {
     });
     if (error) return res.status(400).send(__.error(error.details[0].message));
 
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ email: req.body.email }, 'email password');
     if (!user) return res.status(400).send(__.error('Invalid email or password.'));
 
     const validPassword = await bcrypt.compare(req.body.password, user.password);
     if (!validPassword) return res.status(400).send(__.error('Invalid email or password'));
+
+    await User.updateOne({ _id: user._id }, {
+        $set: { online: true }
+    });
 
     const token = user.generateAuthToken();
     res.header('x-user-auth-token', token)
        .status(200)
        .send(__.success('Loged in.'));
 }
+
+const logut = async (req, res) => {
+    // await User.updateOne({ _id:  }, {
+    //     $set: { online: false }
+    // });
+
+    res.redirect('home');
+};
 
 
 router.post('/signup', signup);

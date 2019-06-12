@@ -1,0 +1,606 @@
+<%- include('../includes/head') %>
+
+<style>
+    .main {
+        width: 100%;
+    }
+    .heading-main {
+        width: 85%;
+        margin: 0 auto;
+        margin-top: 40px;
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        background-color: rgb(7, 45, 81);
+        padding: 15px 20px;
+    }
+    .content {
+        width: 85%;
+        margin: 0 auto;
+        display: flex;
+    }
+    .content .left {    
+        width: 75%;
+    }
+    .content .left .header {
+        display: flex;
+        margin-top: 30px;
+        margin-bottom: 40px;
+    }
+    .content .left .header .image-box {
+        width: 25%;
+    }
+    .content .left .header .image-box .image {
+
+    }
+    .content .left .header .text {
+        width: 75%;
+        padding-left: 60px;
+    }
+    .content .left .header .text .name {
+        font-size: 28px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .content .left .header .text .by {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .content .left .form-box { 
+        width: 100%;
+        border: 1px solid #f89509;
+        margin-top: 20px;
+        background-color: rgb(254, 245, 232);
+        margin-bottom: 30px;
+    }
+    .content .left .form-box .heading {
+        display: flex;
+        background-color: rgb(252, 202, 133);
+        padding: 15px;
+        margin-bottom: 1px solid #f89509;
+    }
+    .content .left .form-box .heading .number {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgb(248, 149, 9);
+        color: white;
+        font-size: 25px;
+        text-align: center;
+        margin-right: 20px;
+        line-height: 50px;
+        font-weight: bold;
+    }
+    .content .left .form-box .heading .text {
+        flex: 1;
+    }
+    .content .left .form-box .heading .text .step {
+        font-size: 22px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+    }
+    .content .left .form-box .heading .text .details {
+        font-size: 18px;
+    }
+    .content .left .form-box .form {
+        padding: 35px 50px;
+    }
+    .content .left .form-box .input-box {
+        margin-bottom: 20px;
+    }
+    .content .left .form-box .input-box label {
+        display: block;
+        font-size: 17px;
+        font-weight: bold;
+        margin-bottom: 7px;
+    }
+    .content .left .form-box .input-box input {
+        width: 70%;
+        padding: 8px 10px;
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    .content .left .form-box .input-box .sub {
+        font-size: 14px;
+        color: rgba(30, 30, 30, .8);
+    }
+    .content .left .form-box .submit-button {
+        width: 200px;
+        padding: 10px;
+        text-align: center;
+        text-transform: uppercase;
+        background-color: transparent;
+        border: 1px solid rgba(0, 0, 0, .8);
+        font-size: 16px;
+        margin-top: 15px;
+    }
+    .content .left .form-box .form .detail {
+        height: 300px;
+        overflow-y: scroll;
+    }
+    .content .left .form-box .form .detail .head {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        margin-top: 8px;
+    }
+    .content .left .form-box .form .detail .text {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+    .content .left .form-box .form .tick {
+        margin-top: 50px;
+        background-color: none;
+    }
+    .content .left .form-box .form .tick .tick-heading {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .content .left .form-box .form .check {
+        margin-bottom: 8px;
+        display: flex;
+    }
+    .content .left .form-box .form .check .text {
+        padding-left: 8px;
+    }
+    .content .right {
+        width: 25%;
+    }
+    .content .left .form-box .select {
+        width: 70%;
+        padding: 8px 10px;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    .content .left .form-box .form .error-box {
+        width: 100%;
+        margin-bottom: 30px;
+        border: 1px solid rgba(255, 0, 0, .2);
+        border-radius: 2px;
+        padding: 10px;
+        background-color: rgba(255, 0, 0, .05);
+    }
+
+    /* Invesment Entity Form */ 
+    .entity {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    .entity .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, .4);
+    }
+    .entity .form {
+        padding: 30px 50px;
+        background-color: white;
+        width: 80%;
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        margin-bottom: 40px;
+        transform: translate(-50%);
+    }
+    .entity .form .error {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: 1px solid rgba(255, 0, 0, .2);
+        border-radius: 2px;
+        padding: 10px;
+        background-color: rgba(255, 0, 0, .05);
+        display: none;
+    }
+    .entity .form .heading {
+        display: flex;
+        justify-content: space-between;
+    }
+    .entity .form .heading .text {
+        font-size: 22px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .entity .form .heading .close {
+        width: 40px;
+        height: 40px;
+        background-color: red;
+    }
+    .entity .form .sub-heading {
+        font-size: 18px;
+        margin-top: 35px;
+        margin-bottom: 8px;
+    }
+    .entity .form .separator {
+        width: 100%;
+        height: 1px;
+        background-color: rgba(0, 0, 0, .05);
+        margin-top: 40px;
+    }
+    .entity .form .input {
+        margin-bottom: 12px;
+        margin-top: 12px;
+    }
+    .entity .form .input label {
+        font-size: 18px;
+    }
+    .entity .form .input input {
+        border: 1px solid rgba(0, 0, 0, .2);
+        border-radius: 2px;
+        width: 100%;
+        font-size: 18px;
+        padding: 6px 9px;
+    }
+    .entity .form .input .checkbox {
+        width: 25px;
+    }
+    .entity .form .button {
+        font-size: 18px;
+        padding: 10px 20px;
+        border: 1px solid rgba(0, 0, 0, .2);
+        background-color: transparent;
+        text-transform: uppercase;
+        margin-top: 10px;
+        width: 300px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .content .left .form-box .assistance {
+        display: flex;
+        margin-bottom: 30px;
+    }
+    .content .left .form-box .assistance .help-box {
+        width: 10%;
+    }
+    .content .left .form-box .assistance .help-box img {
+        width: 100%;
+    }
+    .content .left .form-box .assistance .help-text {
+        width: 90%;
+        padding-left: 60px;
+        font-size: 18px;
+    }
+</style>
+
+</head>
+<body>
+
+    <%- include('../includes/navigation') %>
+
+    <div class="entity">
+        <div class="overlay"></div>
+        <div class="form">
+            <div class="error"></div>
+            <form id="entity-form" action="/newInvesmentEntity" method="POST">
+                <input id="userId" type="hidden" name="userId" value="<%= userId %>">
+                <input id="invesmentId" type="hidden" name="invesmentId" value="<%= invesmentId %>">
+                <div class="heading">
+                    <div class="text">Create new entity</div>
+                    <div class="close"></div>
+                </div>
+                <div class="sub-heading">Investing Entity</div>
+                <div class="input">
+                    <label for="">Account Type</label>
+                    <input type="text" name="accountType" autocomplete="off">
+                </div>
+                <div class="input">
+                    <label for="">SSN/Tax ID</label>
+                    <input type="text" name="taxId" autocomplete="off">
+                </div>
+                <div class="separator"></div>
+                <div class="sub-heading">Account Information</div>
+                <div class="input">
+                    <label for="">Legal entity investing name</label>
+                    <input type="text" name="entityName" autocomplete="off">
+                </div>
+                <div class="input">
+                    <label for="">Do you have a accredited account?</label>
+                    <input class="checkbox" type="checkbox" name="accredited" value="Yes">Yes
+                    <input class="checkbox" type="checkbox" name="accredited" value="No">No
+                </div>
+                <div class="separator"></div>
+                <div class="sub-heading">Mailing Information</div>
+                <div class="input">
+                    <label for="">Address</label>
+                    <input type="text" name="address" autocomplete="off">
+                </div>
+                <div class="input">
+                    <label for="">City</label>
+                    <input type="text" name="city" autocomplete="off">
+                </div>
+                <div class="input">
+                    <label for="">Country</label>
+                    <input type="text" name="country" autocomplete="off">
+                </div>
+                <div class="input">
+                    <label for="">State or Province</label>
+                    <input type="text" name="state" autocomplete="off">
+                </div>
+                <div class="input">
+                    <label for="">Postal Code</label>
+                    <input type="text" name="postalCode" autocomplete="off">
+                </div>
+                <div class="separator"></div>
+                <div class="sub-heading">
+                    Distribution Banking Iformation
+                </div>
+                <div class="input">
+                    <label for="">Preferred Distribution Payment Method</label>
+                    <input type="text" name="paymentMethod" autocomplete="off">
+                </div>
+                <div class="input">
+                    <label for="">Routing/ABA Number</label>
+                    <input type="text" name="routingABANumber" autocomplete="off">
+                </div>
+                <div class="input">
+                    <label for="">SWIFT Code</label>
+                    <input type="text" name="SWIFTCode" autocomplete="off">
+                </div>
+                <div class="input">
+                    <label for="">Account Number</label>
+                    <input type="text" name="accountNumber" autocomplete="off">
+                </div>
+                <div class="input">
+                    <label for="">Financial Institution</label>
+                    <input type="text" name="financialInstitutions" autocomplete="off">
+                </div>
+                <div class="input">
+                    <label for="">Funding Note</label>
+                    <input type="text" name="fundingNotes" autocomplete="off">
+                </div>
+                <div class="button entity-submit">Create New Entity</div>
+            </form>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="heading-main">Transaction Center</div>
+        <div class="content">
+            <div class="left">
+                <div class="header">
+                    <div class="image-box">
+                        <img class="image" src="" alt="">
+                    </div>
+                    <div class="text">
+                        <div class="name"><%= invesmentName %></div>
+                        <div class="by">By Boron Capital</div>
+                    </div>
+                </div>
+                <div class="form-box">
+                    <div class="heading">
+                        <div class="number">1</div>
+                        <div class="text">
+                            <div class="step">Offer Submission</div>
+                            <div class="details">Offer to invest in Cardone Equity Fund V, LLC (CEF V)</div>
+                        </div>
+                    </div>
+
+                    <form class="form" action="/offerSubmission" method="POST">
+
+                        <% if (error != null) { %>
+                            <div class="error-box"><%= error %></div>
+                        <% } %>
+
+                        <div class="input-box">
+                            <label for="">InvesmentCommited</label>
+                            <input type="text" name="invesmentCommited" autocomplete="off">
+                            <div class="sub">Minimum of $6000</div>
+                        </div>
+                        <div class="input-box">
+                            <label for="">Phone Number</label>
+                            <input type="text" name="phoneNumber" autocomplete="off">
+                        </div>
+                        <div class="input-box">
+                            <label for="">Investing Entity</label>
+                            <div class="container" style="display:flex;align-items:baseline;">
+                                <select class="select" name="investingEntity">
+                                    <% if (userEntity != null) { %>
+                                        <option disabled selected value>Select..</option>
+                                        <% for (var i = 0; i < userEntity.length; i++) { %>
+                                            <option value="<%= userEntity[i].name %>"><%= userEntity[i].name %></option>
+                                        <% } %>
+                                    <% } %>
+                                </select>
+                                <div class="edit" style="cursor:pointer;margin-left:20px;">Edit</div>
+                                <div class="create" style="cursor:pointer;margin-left:20px;">Create New Entity</div>
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <div class="head">Overview Disclosures/Disclaimers</div>
+                            <div class="text">This overview does not constitute an offer to sell you a security, or a solicitation of an offer by you to purchase a security. No offer to sell or solicitation of an offer to buy may be made prior to the delivery by the project sponsor of definitive documentation relating to a proposed investment (collectively, the "Offering Materials"), including, in most cases, (1) an offering circular or private placement memorandum describing the investment opportunity and the rights, preferences and obligations attached to the security being offered, (2) an operating or similar agreement governing operation of the business entity being formed and defining the rights of equity owners, and (3) a form of subscription agreement governing your formal offer to subscribe for an equity interest in a Cardone Capital project entity. You are urged to review carefully all offering materials that are provided to you by the project sponsor before making any investment decision. You are also advised to consult with your own tax, legal, financial and other advisers prior to making an investment.</br>
+                            The overview is also summary in nature, and does not purport to be complete.</br>        
+                            All offers and sales that are made through the Cardone Capital portal have not been registered under the United States Securities Act of 1933, as amended, or registered or qualified under applicable state securities laws. Neither the Securities and Exchange Commission nor any state regulatory authority has reviewed, approved or disapproved of any offers or sales, the related offering materials, or the terms of any offering, or determined whether the offering materials are truthful or complete. It is illegal for any person to tell you otherwise.</div>
+                            <div class="head">Indications of Interest</div>
+                            <div class="text">No money or binding legal commitment is being requested at this time. Offers and sales will only be made pursuant to the formal Offering Materials to be provided by the project sponsor. Investor commitments to purchase can only be made pursuant to reviewing, signing and submitting a subscription agreement, operating agreement, and private placement memorandum provided by the project sponsor. The project sponsor may accept or reject a prospective investor after review of the signed project documents in its sole and absolute discretion.</br>
+                            Confidentiality</br>        
+                            The project sponsor is a private company that operates in a highly competitive industry. Accordingly, the project sponsor takes great precautions to protect its proprietary information and confidential documents concerning its business operations, financial information and prospective operations and in this regard maintains an unbending corporate policy to protect its confidential information from being disseminated. Therefore, any and all information provided by the project sponsor is strictly confidential, solely for the purpose of evaluating a potential purchase of units in a specific project and for no other purposes. With the sole exceptions of your officers, directors, financial advisors, accountants or legal counsel as absolutely necessary to evaluate the possible transaction contemplated herein, the confidential information shall not be disclosed to any third party without the project sponsor’s written consent. By accepting receipt of this information, you acknowledge that the information provided to you shall be held in the strictest confidence, shall not be copied or disseminated in any manner except to the individuals mentioned above and shall be only used for the purpose for which it is intended.</div>
+                        </div>
+                        <div class="tick">
+                            <div class="tick-heading" style="background-color: none !important;">By clicking the submit button below:</div>
+                            <div class="check">
+                                <input type="checkbox">
+                                <div class="text">
+                                    I acknowledge that I am providing the project sponsor an indication of my interest to invest in this project based on my review of the materials made available to me.
+                                </div>
+                            </div>
+                            <div class="check">
+                                <input type="checkbox">
+                                <div class="text">
+                                    I have read the foregoing explanation and disclaimer and understand its contents, including that I will be asked to review, complete, execute and deliver additional materials, including a subscription or similar agreement, before my commitment to invest in a project will be complete, and no subscription will be binding until it is accepted by a project sponsor in such sponsor's sole discretion.
+                                </div>
+                            </div>
+                            <div class="check">
+                                <input type="checkbox">
+                                <div class="text">
+                                    I acknowledge that this investment does not exceed greater than 10% of my annual income (mine alone or with a spouse) or net worth (excluding my primary residence), whichever is greater.
+                                </div>
+                            </div>
+                            <div class="check">
+                                <input type="checkbox">
+                                <div class="text">
+                                    Please be advised, should we have to return your funds for any reason, such as inconsistencies in your legal name, banking information, address, social security number or date of birth, you will be assessed a nonrefundable $250 processing fee. Should your application not make it through the primary verification process, the $250 processing fee will be retained and the balance of your funds will be returned.
+                                </div>
+                            </div>
+                        </div>
+                        <input class="submit-button" type="submit" value="Submit Offer">
+                    </form>
+
+                    <div class="assistance">
+                        <div class="help-logo">
+                            <img src="" alt="">
+                        </div>
+                        <div class="help-text">
+                            For assistance, call <b>(833) 822-7435</b> or text <b>(305) 407-0276</b> or email <b>invest@cardonecapital.com</b>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="right"></div>
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+        let body = document.querySelector('body');
+        let entity = document.querySelector('.entity');
+        let overlay = document.querySelector('.overlay');
+        let form = document.querySelector('.form');
+        let editButton = document.querySelector('.edit');
+        let createButton = document.querySelector('.create');
+        let closeButton = document.querySelector('.close');
+        let entitySubmitButton = document.querySelector('.entity-submit');
+
+        createButton.addEventListener('click', () => {
+            entity.style.display = 'block';
+            body.style.overflow = 'hidden';
+            entity.style['overflow-y'] = 'scroll';
+        });
+
+        closeButton.addEventListener('click', () => {
+            entity.style.display = 'none';
+            entity.style['overflow-y'] = 'none';
+            body.style.overflow = 'scroll';
+        });
+
+        entitySubmitButton.addEventListener('click', () => {
+            let data = $('#entity-form').serializeObject();
+            let invesmentId = $('#invesmentId').val();
+            let userId= $('#userId').val();
+            data['invesmentId'] = invesmentId;
+            data['userId'] = userId;
+            let errorBox = $('.entity .form .error');
+            $.ajax({
+                url: "/newInvesmentEntity",
+                type: "POST",
+                data: data,
+                success: function (data) {
+                    errorBox.css({
+                        'display': 'block',
+                        'border-color': 'rgba(0, 255, 0, .2)',
+                        'background-color': 'rgba(0, 255, 0, .05)',
+                    });
+                    errorBox.text('New Entity created successfully');
+
+                    let select = $('.select');
+                    select.html('<option disabled selected value>Select..</option>');
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        select.html('<option value="' + data[i] + '">' + data[i] + '</option>');
+                    }
+                },
+                error: function (e) {
+                    errorBox.css({ 'display': 'block' });
+                    errorBox.text(e.responseText);
+                    console.log(e.responseText); 
+                }
+            });
+        });
+
+        // checkbox toggle
+        $('input[type="checkbox"]').on('change', function() {
+            $('input[type="checkbox"]').not(this).prop('checked', false);
+        });
+
+        // serialize form data 
+        (function($) {
+            $.fn.serializeObject = function(){
+
+            var self = this,
+            json = {},
+            push_counters = {},
+            patterns = {
+                "validate": /^[a-zA-Z][a-zA-Z0-9_]*(?:\[(?:\d*|[a-zA-Z0-9_]+)\])*$/,
+                "key":      /[a-zA-Z0-9_]+|(?=\[\])/g,
+                "push":     /^$/,
+                "fixed":    /^\d+$/,
+                "named":    /^[a-zA-Z0-9_]+$/
+            };
+
+
+            this.build = function(base, key, value) {
+                base[key] = value;
+                return base;
+            };
+
+            this.push_counter = function(key){
+                if(push_counters[key] === undefined) {
+                    push_counters[key] = 0;
+                }
+                return push_counters[key]++;
+            };
+
+            $.each($(this).serializeArray(), function() {
+
+                // skip invalid keys
+                if (!patterns.validate.test(this.name)){
+                    return;
+                }
+
+                var k,
+                    keys = this.name.match(patterns.key),
+                    merge = this.value,
+                    reverse_key = this.name;
+
+                while ((k = keys.pop()) !== undefined) {
+
+                    // adjust reverse_key
+                    reverse_key = reverse_key.replace(new RegExp("\\[" + k + "\\]$"), '');
+
+                    // push
+                    if (k.match(patterns.push)) {
+                        merge = self.build([], self.push_counter(reverse_key), merge);
+                    }
+
+                    // fixed
+                    else if(k.match(patterns.fixed)) {
+                        merge = self.build([], k, merge);
+                    }
+
+                    // named
+                    else if(k.match(patterns.named)) {
+                        merge = self.build({}, k, merge);
+                    }
+                }
+
+                json = $.extend(true, json, merge);
+            });
+
+            return json;
+        };
+        })(jQuery);
+    </script>
+
+</body>
+</html>

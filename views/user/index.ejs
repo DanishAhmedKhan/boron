@@ -1,0 +1,190 @@
+<%- include('../includes/head') %>
+
+<style>
+    .main { 
+        width: 100%; 
+        margin-bottom: 30px;
+    }
+    .main .content {
+        width: 85%;
+        margin: 0 auto;
+    }
+    .main .content .main-heading {
+        font-size: 36px;
+        font-weight: bold;
+        text-align: left;
+        margin-top: 30px;
+    }
+    .main .content .invesments {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 25px;
+        grid-column-gap: 30px;
+        grid-row-gap: 30px;
+    }
+    .main .content .invesments .element {
+        border: 1px solid rgba(0, 0, 0, .15);
+    }
+    .main .content .invesments .element .heading {
+        font-size: 24px;
+        color: white;
+        background-color: #112d50;
+        padding: 12px 17px;
+    }
+    .main .content .invesments .element .image-box {
+        width: 100%;
+    }
+    .main .content .invesments .element .image-box .image {
+        width: 100%;
+    }
+    .main .content .invesments .element .details {
+        padding: 5px 15px;
+    }
+    .main .content .invesments .element .list {
+        border-bottom: 1px solid rgba(0, 0, 0, .3);
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    .main .content .invesments .element .last-list {
+        border-bottom: none;
+    }
+    .main .content .invesments .element .list .left {
+        text-align: left;
+        color: black;
+    }
+    .main .content .invesments .element .list .right {
+        text-align: right;
+        color: black;
+    }
+    .main .content .invesments .element .button {
+        font-size: 18px;
+        text-align: center;
+        text-transform: uppercase;
+        color: black;
+        background-color: white;
+        border: 1px solid rgba(0, 0, 0, .5);
+        padding: 5px;
+        margin: 5px 15px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+
+    <%- include('../includes/navigation') %>
+
+    <div class="main">
+        <div class="content">
+            <div class="main-heading">Current Offerings</div>
+            <div class="invesments">
+                <% for (var i = 0; i < invesments.length; i++) { %>
+                    <a href="invesment?id=<%= invesments[i]._id %>">
+                    <div class="element">
+                        <div class="heading"><%= invesments[i].name %></div>
+                        <div class="image-box">
+                            <img src="images/invesmentProperty/<%= invesments[i]._id %>/img.jpeg" alt="" class="image">
+                        </div>
+                        <div class="details">
+                            <div class="list">
+                                <span class="left">Minimum Invesments</span>
+                                <span class="right"><%= invesments[i].minimumInvesment %></span>
+                            </div>
+                            <div class="list">
+                                <span class="left">Targeted Property Cash Flow</span>
+                                <span class="right"><%= invesments[i].targetedPropertyCashFlow %></span>
+                            </div>
+                            <div class="list">
+                                <span class="left">Distributions</span>
+                                <span class="right"><%= invesments[i].distribution %></span>
+                            </div>
+                            <div class="list">
+                                <span class="left">Targeted Hold Period</span>
+                                <span class="right"><%= invesments[i].targetedHoldingPeriod %></span>
+                            </div>
+                            <div class="list last-list">
+                                <span class="left">Fund Size</span>
+                                <span class="right"><%= invesments[i].fundSize %></span>
+                            </div>
+                        </div>
+                        <div class="button">Invest Now</div>
+                    </div>   
+                    </a>                
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .services {
+            width: 80%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(1fr, 4);
+            grid-row-gap: 50px;
+            grid-column-gap: 50px;
+        }
+        .service {
+            display: flex;
+        }
+        .text {
+            margin-left: 30px;
+            border-left: 7px solid black;
+            padding-left: 10px;
+        }
+    </style>
+
+    <div class="services">
+        <div class="service">
+            <div class="logo-box">
+                <img src="images/logo.webp" alt="">
+            </div>
+            <div class="text">
+                dncslkdjfklasdf aksjdkasdjkas
+            </div>
+        </div>
+        <div class="service">
+            <div class="logo-box">
+                <img src="images/logo.webp" alt="">
+            </div>
+            <div class="text">
+                dncslkdjfklasdf aksjdkasdjkas
+            </div>
+        </div>
+        <div class="service">
+            <div class="logo-box">
+                <img src="images/logo.webp" alt="">
+            </div>
+            <div class="text">
+                dncslkdjfklasdf aksjdkasdjkas
+            </div>
+        </div>
+        <div class="service">
+            <div class="logo-box">
+                <img src="images/logo.webp" alt="">
+            </div>
+            <div class="text">
+                dncslkdjfklasdf aksjdkasdjkas
+            </div>
+        </div>
+        <div class="service">
+            <div class="logo-box">
+                <img src="images/logo.webp" alt="">
+            </div>
+            <div class="text">
+                dncslkdjfklasdf aksjdkasdjkas
+            </div>
+        </div>
+        <div class="service">
+            <div class="logo-box">
+                <img src="images/logo.webp" alt="">
+            </div>
+            <div class="text">
+                dncslkdjfklasdf aksjdkasdjkas
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

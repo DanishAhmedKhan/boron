@@ -1,0 +1,14 @@
+module.exports = {
+    apps: [{
+        name: 'Boron',
+        script: './index.js',
+        watch: true, 
+        env: {
+            "NODE_ENV": "development"
+        },
+        production: {
+            "NODE_ENV": "production",
+            "boron_userAuthToken": "123boron"
+        }
+    }]
+}

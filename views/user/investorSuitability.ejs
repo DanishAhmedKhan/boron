@@ -1,0 +1,144 @@
+<%- include('../includes/head') %>
+
+<style>
+    .main {
+        width: 100%;
+    }
+    .heading-main {
+        width: 85%;
+        margin: 0 auto;
+        margin-top: 40px;
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        background-color: rgb(7, 45, 81);
+        padding: 15px 20px;
+    }
+    .content {
+        width: 85%;
+        margin: 0 auto;
+        display: flex;
+    }
+    .content .left {    
+        width: 75%;
+    }
+    .content .left .header {
+        display: flex;
+        margin-top: 30px;
+        margin-bottom: 40px;
+    }
+    .content .left .header .image-box {
+        width: 25%;
+    }
+    .content .left .header .image-box .image {
+
+    }
+    .content .left .header .text {
+        width: 75%;
+        padding-left: 60px;
+    }
+    .content .left .header .text .name {
+        font-size: 28px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .content .left .header .text .by {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .content .left .form-box { 
+        width: 100%;
+        border: 1px solid #f89509;
+        margin-top: 20px;
+        background-color: rgb(254, 245, 232);
+        margin-bottom: 30px;
+    }
+    .content .left .form-box .heading {
+        display: flex;
+        background-color: rgb(252, 202, 133);
+        padding: 15px;
+        margin-bottom: 1px solid #f89509;
+    }
+    .content .left .form-box .heading .number {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgb(248, 149, 9);
+        color: white;
+        font-size: 25px;
+        text-align: center;
+        margin-right: 20px;
+        line-height: 50px;
+        font-weight: bold;
+    }
+    .content .left .form-box .heading .text {
+        flex: 1;
+    }
+    .content .left .form-box .heading .text .step {
+        font-size: 22px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+    }
+    .content .left .form-box .heading .text .details {
+        font-size: 18px;
+    }
+    .content .left .form-box .form {
+        padding: 35px 50px;
+    }
+
+    .primary-paragraph {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .bold {
+        font-weight: bold;
+    }
+</style>
+
+</head>
+<body>
+    
+    <%- include('../includes/navigation') %>
+
+    <div class="main">
+        <div class="heading-main">Transaction Center</div>
+        <div class="content">
+            <div class="left">
+                <div class="header">
+                    <div class="image-box">
+                        <img class="image" src="" alt="">
+                    </div>
+                    <div class="text">
+                        <div class="name">Invesmnet</div>
+                        <div class="by">By Boron Capital</div>
+                    </div>
+                </div>
+                <div class="form-box">
+                    <div class="heading">
+                        <div class="number">3</div>
+                        <div class="text">
+                            <div class="step">Investor Verification</div>
+                            <div class="details">Please verify that you are an accredited investor</div>
+                        </div>
+                    </div>  
+
+                    <div class="form">
+                        <div class="primary-paragraph">
+                            <span class="bold">Thank you for submitting your closing documents.</span>
+                            They are being reviewed. Note that your uploaded documents are always available in the "Closing document" list to the left.
+                        </div>
+                        <div class="primary-paragraph">
+                            <span class="bold">In the mean time please provide verification that you are an accredited investor,</span>
+                            a process mandated bythe SEC. You may either submit a letter from your CPA attorney, or use VerifyInvestor, a third party verification service.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="right"></div>
+        </div>
+    </div>
+
+</body>
+</html>

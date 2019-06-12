@@ -1,0 +1,154 @@
+<%- include('../includes/head') %>
+
+<style>
+    .main {
+        width: 80%;
+        margin: 0 auto;
+        padding-top: 30px;
+    }
+
+    .main .heading {
+        text-align: center;
+        color: black;
+        font-size: 24px;
+    }
+
+    .main .stage {
+        display: flex;
+        justify-content: center;
+        margin-top: 35px;
+        margin-bottom: 30px;
+    }
+
+    .main .stage .element {
+        width: 180px;
+        margin: 0 20px;
+        border: 1px solid black;
+        padding: 15px 25px;
+    }
+
+    .main .stage .element .text {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .main .stage .element .tick {
+        
+    }
+
+    .primary-text {
+        font-size: 15px;
+        color: rgba(0, 0, 0, .9);
+    }
+
+    .form {
+        width: 100%;
+    }
+
+    .form .element {
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    .form .element .label {
+        font-size: 16px;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .form .element .input {
+        padding: 5px 10px;
+        font-size: 14px;
+        width: 300px;
+    }
+
+    .agreement-heading {
+        margin: 20px 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .submit-button {
+        width: 300px;
+        margin: 15px auto;
+        padding: 10px 0;
+        font-size: 16px;
+        color: black;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+</style>
+
+</head>
+<body>
+    
+    <%- include('../includes/navigation') %>
+
+    <div class="main">
+        <div class="heading">
+            Get Access to Institutional-Quality Investment Offerings
+        </div>
+        <div class="stage">
+            <div class="element">
+                <div class="text">Create Account</div>
+                <div class="tick"></div>
+            </div>
+            <div class="element">
+                <div class="text">Create Account</div>
+                <div class="tick"></div>
+            </div>
+            <div class="element">
+                <div class="text">Create Account</div>
+                <div class="tick"></div>
+            </div>
+        </div>
+        <div class="primary-text">
+            Please complete your profile to gain access to private investment offerings.
+        </div>
+        <form class="form" action="/profile" method="POST">
+            <input type="hidden" name="_id" value="<%= user._id %>">
+            <div class="element">
+                <label class="label" for="">Address</label>
+                <input class="input" type="text" name="address" autocomplete="off">
+            </div>
+            <div class="element">
+                <label class="label" for="">City</label>
+                <input class="input" type="text" name="city" autocomplete="off">
+            </div>
+            <div class="element">
+                <label class="label" for="">Postal Code</label>
+                <input class="input" type="text" name="zip" autocomplete="off">
+            </div>
+            <div class="element">
+                <label class="label" for="">Country</label>
+                <input class="input" type="text" name="country" autocomplete="off">
+            </div>
+            <div class="element">
+                <label class="label" for="">State</label>
+                <input class="input" type="text" name="state" autocomplete="off">
+            </div>
+            <div class="element">
+                <label class="label" for="">Primary Phone</label>
+                <input class="input" type="text" name="phone" autocomplete="off">
+            </div>
+            <div class="element">
+                <div class="label" class="text">
+                    Are you an accredited investor or do you invest on behalf of an accredited investing entity 
+                </div>
+                <input class="radio" type="radio" name="accreditedInvestor" value="true">Yes<br>
+                <input class="radio" type="radio" name="accreditedInvestor" value="false">No
+            </div>
+            <div class="agreement-heading">Agreement</div>
+            <div class="primary-text">
+                I understand that the project sponsor will be relying on my certification as to if I am an accredited investor or not, in making opportunities available to me, and that the consequences of a false certification would be significant (including the possibility of a loss of an otherwise available registration exemption to the issuer). I agree that I will be responsible for any losses that are incurred as a result of a false certification or my continued use of the website after obtaining knowledge that a prior certification is no longer true. I agree to immediately inform the project sponsor of any change to my status as an investor.</br></br>
+
+
+                I further understand that, there are certain investment opportunities (not applicable for upcoming Reg A Fund offerings) that are only open to accredited investors and that during that investment process, I will be required, by the United States Securities Regulations, to provide or upload documents which support my certification above that I qualify as an accredited investor, such as W-2s, tax returns, investment account statements, a third-party confirmation from my accountant or broker, and/or any other documents (in each case redacted to eliminate social security numbers, account numbers or other similar sensitive personal identifying or financial information) that will enable issuers to reasonably evaluate my accredited investor status.
+            </div>
+            <input class="submit-button" type="submit" value="Submit and proceed">
+        </form>
+    </div>
+
+</body>
+</html>

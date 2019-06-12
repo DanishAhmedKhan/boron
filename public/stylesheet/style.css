@@ -1,0 +1,98 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Georgia';
+    background-color: #fbfbfb;
+}
+
+.margin-top-small {
+    margin-top: 1rem;
+}
+.margin-top-medium {
+    margin-top: 2rem;
+}
+.margin-top-large {
+    margin-top: 3rem;
+}
+.margin-bottom-small {
+    margin-bottom: 1rem;
+}
+.margin-bottom-medium {
+    margin-bottom: 2rem;
+}
+.margin-bottom-large {
+    margin-bottom: 3rem;
+}
+
+.horizontal-line {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, .8);
+}
+
+.header {
+    width: 100%;
+    height: 11rem;
+    position: relative;
+    background-color: #eee;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.header img {
+    width: 10rem;
+    position: absolute;
+    top: 50%;
+    left: 7rem;
+    transform: translateY(-50%);
+}
+
+.primary-heading {
+    font-size: 3rem;
+    color: #333;
+}
+
+.primary-text {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.signup {
+    width: 30rem;
+    margin: 0 auto;
+    margin-top: 10rem;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 1.2rem 1.2rem;
+    display: inline-block;
+    border-radius: .4rem;
+    border: 1px solid #ccc;
+}
+
+.form-label {
+    font-size: 1.6rem;
+    display: inline-block;
+}
+
+.button-primary {
+    border: none;
+    padding: 1.2rem 2rem;
+    color: white;
+    background-color: #ffa000;
+    transition: all .3s;
+}
+
+.button-primary:hover {
+    background-color: 	#ed9502;
+}

@@ -5,32 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Boron</title>
+    <link rel="stylesheet" href="stylesheet/style.css">
 </head>
 <body>
     
-    <h1 class="primary-heading">Boron</h1>
+    <header class="header">
+        <img src="images/logo-blue.png" alt="">
+    </header>
+    
+    <section class="signup">
+        <p class="primary-text margin-bottom-large">Signup</p>
 
-    <p>Signup</p>
-
-    <form action="api/user/signup" method="POST">
-        <label for="email">Email</label>
-        <input type="text" name="email"></br>
-        <label for="password">Password</label>
-        <input type="text" name="password"></br>
-        <input type="submit">
-    </form>
-
-    <p><%= error %></p>
-
-    <p>Login</p>
-
-    <form action="api/user/login" method="POST">
-        <label for="email">Email</label>
-        <input type="text" name="email"></br>
-        <label for="password">Password</label>
-        <input type="text" name="password"></br>
-        <input type="submit">
-    </form>
+        <form class="form" action="api/user/signup" method="POST">
+            <label class="form-label margin-bottom-small" for="email">Email</label></br>
+            <input type="text" name="email" autocomplete="off"  value=""></br>
+            <label class="form-label margin-bottom-small margin-top-small" for="password">Password</label></br>
+            <input type="text" name="password" autocomplete="off" value=""></br>
+            <input class="margin-top-medium button-primary" type="submit" value="Signup">
+        </form>
+    </section>
 
 </body>
 </html>

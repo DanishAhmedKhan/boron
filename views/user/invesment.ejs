@@ -1,0 +1,154 @@
+<%- include('../includes/head') %>
+
+<style>
+    .primary-paragraph {
+        font-size: 16px;
+    }
+    .main { width: 100%; }
+    .main .content {
+        width: 85%;
+        margin: 0 auto;
+        display: flex;
+    }
+    .main .content .left {
+        width: 70%;
+        padding: 15px;
+        padding-left: 0;
+    }
+    .main .content .left .image-box {
+
+    }
+    .main .content .left .image-box .image {
+        width: 100%;
+    }
+    .main .content .left .heading {
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .main .content .right {
+        width: 30%;
+        padding: 15px;
+    }
+    .main .content .right .name {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .main .content .right .button {
+        font-size: 18px;
+        text-align: center;
+        text-transform: uppercase;
+        color: black;
+        background-color: white;
+        border: 1px solid rgba(0, 0, 0, .5);
+        padding: 7px;
+        margin-top: 15px;
+        margin-bottom: 25px;
+    }
+    .main .content .right .box {
+        border: 1px solid rgba(0, 0, 0, .15);
+        padding: 10px;
+    }
+    .main .content .right .box .element {
+        display: flex;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .main .content .right .box .element .left {
+        padding: 0;
+        width: 70%;
+        text-align: right;
+        padding-right: 15px; 
+        font-weight: bold;
+    }   
+    .main .content .right .box .element .right {
+        padding: 0;
+        width: 30%;
+        text-align: left;
+    }
+    .main .content .right .document {
+        margin-top: 30px;
+    }
+    .main .content .right .document .heading {
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+    .main .content .right .document .element {
+        padding-left: 50px;
+    }
+    .main .content .right .document .element .logo-box {
+
+    }
+    .main .content .right .document .element .link {
+        font-size: 18px;
+        color: black;
+    }   
+</style>
+
+</head>
+<body>
+
+    <%- include('../includes/navigation') %>
+
+    <div class="main">
+        <div class="content">
+            <div class="left">
+                <div class="image-box">
+                    <img class="image" src="" alt="">
+                </div>
+                <div class="heading"> Fund Summary</div>
+                <div class="primary-paragraph"><%= invesment.fundSummary %></div>
+            </div>
+            <div class="right">
+                <div class="name"><%= invesment.name %></div>
+                <% if (hasUserInvested) { %>
+                    <a href="/offerSubmission?id=<%= invesment._id %>"><div class="button">Review In Progress Offer</div></a>
+                    <a href="/offerSubmission?id=<%= invesment._id %>"><div class="button">Invest Again</div></a>
+                <% } else { %>
+                    <a href="/offerSubmission?id=<%= invesment._id %>"><div class="button">Invest Now</div></a>
+                <% } %>
+                <div class="box">
+                    <div class="element">
+                        <div class="left">Minimum Invesment:</div>
+                        <div class="right"><%= invesment.minimumInvesment %></div>
+                    </div>
+                    <div class="element">
+                        <div class="left">Targeted Property Cash:</div>
+                        <div class="right"><%= invesment.targetedInvesmentCashFlow %></div>
+                    </div>
+                    <div class="element">
+                        <div class="left">Distributions:</div>
+                        <div class="right"><%= invesment.distributions %></div>
+                    </div>
+                    <div class="element">
+                        <div class="left">Targeted Hold Period:</div>
+                        <div class="right"><%= invesment.targetedHoldingPeriod %></div>
+                    </div>
+                    <div class="element">
+                        <div class="left">Fund Size:</div>
+                        <div class="right"><%= invesment.fundSize %></div>
+                    </div>
+                </div>
+                <div class="document">
+                    <div class="heading">Documents</div>
+                    <% for (var i = 0; i < invesment.documents.length; i++) { %>
+                        <div class="element">
+                            <div class="logo-box"></div>
+                            <a href="<%= invesment.documents[i].filename %>">
+                                <div class="link"><%= invesment.documents[i].name %></div>
+                            </a>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

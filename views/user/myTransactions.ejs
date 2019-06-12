@@ -1,0 +1,154 @@
+<%- include('../includes/head') %>
+
+<style>
+    .main { 
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .heading-main {
+        width: 85%;
+        margin: 0 auto;
+        margin-top: 40px;
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        background-color: rgb(7, 45, 81);
+        padding: 15px 20px;
+    }
+    .main .invesment {
+        width: 85%;
+        margin: 0 auto;
+        background-color: #fafafa;
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-top: 30px;
+    }
+    .main .invesment .head {
+        background-color: rgb(250, 175, 70);
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        padding: 10px;
+    }
+    .main .invesment .content {
+        display: flex;
+        padding-top: 20px;
+    }
+    .main .invesment .content .first {
+        width: 20%;
+        padding-right: 15px;
+    }
+    .main .invesment .content .first .image-box {
+        width: 100%;
+        /* border: 3px solid white; */
+        /* box-shadow: 5px 5px 3px 1px #999; */
+    }
+    .main .invesment .content .first .image-box .image {
+        width: 100%;
+    }
+    .main .invesment .content .second {
+        width: 45%;
+        padding-right: 15px;
+        padding-left: 25px;
+    }
+    .main .invesment .content .second .invesment-heading {
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .main .invesment .content .second .by {
+        font-size: 19px;
+        font-weight: bold;
+    }
+    .main .invesment .content .second .offerStatus {
+        border: 1px solid #faaf46;
+        padding: 10px;
+        margin-top: 10px;
+    }
+    .main .invesment .content .second .offerStatus .text {
+        padding-left: 22px;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+    .main .invesment .content .second .offerStatus .list {
+        line-height: 1.5;
+    }
+    .main .invesment .content .second .offerStatus .list .bold {
+        font-weight: bold;
+    }
+    .main .invesment .content .second .offerStatus .list a {
+        color: #800080;
+        font-weight: bold;
+    }
+    .main .invesment .content .second .offerStatus .text {
+
+    }
+    .main .invesment .content .third {
+        width: 35%;
+        padding-left: 15px;
+    }
+    .main .invesment .content .third .text {
+        padding-left: 22px;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+    .main .invesment .content .third .list {
+
+    }
+    .main .invesment .content .third .list .light {
+        color: #666;
+        font-weight: bold;
+    }
+</style>
+
+</head>
+<body>
+    
+    <%- include('../includes/navigation') %>
+
+    <div class="main">
+        <div class="heading-main">My Transactions</div>
+
+        <% for (let i = 0; i < invesments.length; i++) { %>
+
+            <div class="invesment">
+                <div class="head">
+                    <div class="text">
+                        Action Required: <%= invesments[i].actionRequired %>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="first">
+                        <div class="image-box">
+                            <img class="image" src="images/invesmentProperty/<%= invesments[i].id %>/img.jpeg" alt="">
+                        </div>
+                    </div>
+                    <div class="second">
+                        <div class="invesment-heading"><%= invesments[i].name %></div>
+                        <div class="by">By Cardone Capitals</div>
+                        <div class="offerStatus">
+                            <div class="text">
+                                Offer Status
+                            </div>
+                            <ul class="list">
+                                <li><span class="bold">Latest Update:</span> <%= invesments[i].latestUpdate %></li>
+                                <li><span class="bold">Next Step:</span> <%= invesments[i].nextStep %></li>
+                                <a href="<%= invesments[i].proceedLink %>" class="proceed">Proceed to <%= invesments[i].proceed %></a>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="third">
+                        <div class="text">Offer Highlight</div>
+                        <ul class="list">
+                            <li><span class="light">Your Offer:</span><%= invesments[i].offer %></li>
+                            <li><span class="light">Investing Entity:</span> <%= invesments[i].investingEntity %></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        <% } %>
+
+    </div>
+
+</body>
+</html>

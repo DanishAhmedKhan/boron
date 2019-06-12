@@ -1,0 +1,44 @@
+<style>
+    .menu {
+        width: 100%;
+    }
+    .menu .content {
+        padding-top: 5px;
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    .menu .content .logo-box {
+        width: 120px;
+    }
+    .menu .content .logo-box .logo {
+        width: 100%;
+    }
+    .menu .content .button {
+        width: 80px;
+        padding: 7px 15px;
+        font-size: 15px;
+        margin-top: 10px;
+        border-radius: 2px;
+        color: white;
+        background-color: rgb(17, 45, 80);
+        text-align: center;
+        text-transform: uppercase;
+    }
+</style>
+<div class="menu">
+    <div class="content">
+        <div class="logo-box">
+            <img class="logo" src="images/logo-blue.png" alt="">
+        </div>
+        <% if (!isAuthenticated) { %>
+            <% if (pageTitle == 'Login') { %>
+                <a href="/admin/signup"><div class="button">Signup</div></a>
+            <% } else if (pageTitle == 'Signup') { %>
+                <a href="/admin/login"><div class="button">Login</div></a>
+            <% } %>
+        <% } else { %>
+        <% } %>
+    </div>
+</div>

@@ -1,0 +1,361 @@
+<%- include('../includes/head') %>
+
+<style>
+    .main {
+        width: 100%;
+    }
+    .heading-main {
+        width: 85%;
+        margin: 0 auto;
+        margin-top: 40px;
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        background-color: rgb(7, 45, 81);
+        padding: 15px 20px;
+    }
+    .content {
+        width: 85%;
+        margin: 0 auto;
+        display: flex;
+    }
+    .content .left {    
+        width: 75%;
+    }
+    .content .left .header {
+        display: flex;
+        margin-top: 30px;
+        margin-bottom: 40px;
+    }
+    .content .left .header .image-box {
+        width: 25%;
+    }
+    .content .left .header .image-box .image {
+
+    }
+    .content .left .header .text {
+        width: 75%;
+        padding-left: 60px;
+    }
+    .content .left .header .text .name {
+        font-size: 28px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .content .left .header .text .by {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .content .left .form-box { 
+        width: 100%;
+        border: 1px solid #f89509;
+        margin-top: 20px;
+        background-color: rgb(254, 245, 232);
+        margin-bottom: 30px;
+    }
+    .content .left .form-box .heading {
+        display: flex;
+        background-color: rgb(252, 202, 133);
+        padding: 15px;
+        margin-bottom: 1px solid #f89509;
+    }
+    .content .left .form-box .heading .number {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgb(248, 149, 9);
+        color: white;
+        font-size: 25px;
+        text-align: center;
+        margin-right: 20px;
+        line-height: 50px;
+        font-weight: bold;
+    }
+    .content .left .form-box .heading .text {
+        flex: 1;
+    }
+    .content .left .form-box .heading .text .step {
+        font-size: 22px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+    }
+    .content .left .form-box .heading .text .details {
+        font-size: 18px;
+    }
+    .content .left .form-box .form {
+        padding: 35px 50px;
+    }
+
+    .primary-paragraph {
+        font-size: 18px;
+    }
+
+    .content .left .form-box .form .parta {
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+    .content .left .form-box .form .box {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: white;
+    }
+    .content .left .form-box .form .box-heading {
+        background-color: #f5f5f5;
+        padding: 10px;
+        font-weight: bold;
+        border-bottom: 1px solid #ddd;
+    }
+    .content .left .form-box .form .box-heading .name {
+        font-size: 16px;
+        color: #f89509;
+    }
+    .content .left .form-box .form .box form {
+        width: 100%;
+        padding: 20px;
+    }
+    .content .left .form-box .form .box form .line {
+        width: 100%;
+        display: grid;
+    }
+    .content .left .form-box .form .box form input {
+        padding: 7px;
+        font-size: 17px;
+        width: 100%;
+    }
+    .content .left .form-box .form .box form select {
+        padding: 7px;
+        font-size: 17px;
+        width: 100%;
+    }
+    .content .left .form-box .form .box form .onethird {
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-row-gap: 20px;
+        grid-column-gap: 30px;
+    } 
+    .content .left .form-box .form .box form .half {
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 30px;
+    }   
+    .content .left .form-box .form .box form .full {
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+    }
+    .content .left .form-box .form .box form .input label {
+        font-size: 18px;
+        line-height: 30px;
+    }
+    .content .left .form-box .form .box form .input .checkbox {
+        width: 50px;
+    }
+    .content .left .form-box .form .box form .submit-button {
+        padding: 8px;
+        width: 100px;
+        font-size: 18px;
+        text-transform: uppercase;
+        text-align: center;
+        border: 1px solid rgba(0, 0, 0, .8);
+        background-color: transparent;
+        margin-top: 30px;
+    }
+
+    .content .left .form-box .form .error-box {
+        width: 100%;
+        margin-bottom: 30px;
+        border: 1px solid rgba(255, 0, 0, .2);
+        border-radius: 2px;
+        padding: 10px;
+        background-color: rgba(255, 0, 0, .05);
+    }
+
+    .content .left .form-box .assistance {
+        display: flex;
+        margin-bottom: 30px;
+    }
+    .content .left .form-box .assistance .help-box {
+        width: 10%;
+    }
+    .content .left .form-box .assistance .help-box img {
+        width: 100%;
+    }
+    .content .left .form-box .assistance .help-text {
+        width: 90%;
+        padding-left: 60px;
+        font-size: 18px;
+    }
+</style>
+
+</head>
+<body>
+    
+    <%- include('../includes/navigation') %>
+
+    <div class="main">
+        <div class="heading-main">Transaction Center</div>
+        <div class="content">
+            <div class="left">
+                <div class="header">
+                    <div class="image-box">
+                        <img class="image" src="" alt="">
+                    </div>
+                    <div class="text">
+                        <div class="name">Invesmnet</div>
+                        <div class="by">By Boron Capital</div>
+                    </div>
+                </div>
+                <div class="form-box">
+                    <div class="heading">
+                        <div class="number">3</div>
+                        <div class="text">
+                            <div class="step">Investor Verification</div>
+                            <div class="details">Please verify that you are an accredited investor</div>
+                        </div>
+                    </div>
+
+                    <div class="form">
+   
+                        <% if (error != null) { %>
+                            <div class="error-box"><%= error %></div>
+                        <% } %>
+
+                        <div class="primary-paragraph">
+                            Please provide the information below for each member in the selected investing entity.    
+                        </div>
+                        <div class="parta">PART A: Investing Entity Members</div>
+                        <div class="box">
+                            <div class="box-heading">
+                                <div class="name"><%= userName %></div>
+                            </div>
+                            <form action="/investorVerification" method="POST">
+                                <div class="line onethird">
+                                    <div class="input">
+                                        <label for="">First Name</label>
+                                        <input type="text" name="firstName" autocomplete="off">
+                                    </div>
+                                    <div class="input">
+                                        <label for="">Middle Name</label>
+                                        <input type="text" name="middleName" autocomplete="off">
+                                    </div>
+                                    <div class="input">
+                                        <label for="">Last Name</label>
+                                        <input type="text" name="lastName" autocomplete="off">
+                                    </div>
+                                    <div class="input">
+                                        <label for="">Date of Birth</label>
+                                        <input type="text" name="dob" autocomplete="off">
+                                    </div>
+                                    <div class="input">
+                                        <label for="">Primary Phone</label>
+                                        <input type="text" name="primaryPhone" autocomplete="off">
+                                    </div>
+                                    <div class="input">
+                                        <label for="">SS#/EIN/ITIN</label>
+                                        <input type="text" name="code" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="line full" style="margin-top: 30px;">
+                                    <div class="input">
+                                        <label for="">What is your US residency status?</label>
+                                        <select name="residencyStatus" id="">
+                                            <option disabled selected value>Select..</option>
+                                            <option value="US_citizen">US Citizen</option>
+                                            <option value="US_citizen">US Resident</option>
+                                            <option value="non_US_resident">Non US Resident</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="line full" style="margin-top: 30px;">
+                                    <div class="input">
+                                        <label for="">Address</label>
+                                        <input type="text" name="address" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="line half" style="margin-top: 20px;">
+                                    <div class="input">
+                                        <label for="">City</label>
+                                        <input type="text" name="city" autocomplete="off">
+                                    </div>
+                                    <div class="input">
+                                        <label for="">Country</label>
+                                        <input type="text" name="country" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="line half" style="margin-top: 20px;">
+                                    <div class="input">
+                                        <label for="">Postal Code</label>
+                                        <input type="text" name="postalCode" autocomplete="off">
+                                    </div>
+                                    <div class="input">
+                                        <label for="">Stat or Province</label>
+                                        <input type="text" name="state" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="line half" style="margin-top: 30px;">
+                                    <div class="input">
+                                        <label for="">What is your Employment Status</label>
+                                        <select name="employmentStatus" id="">
+                                            <option disabled selected value>Select..</option>
+                                            <option value="not_employed">Not Employed</option>
+                                            <option value="employed">Employed</option>
+                                            <option value="retired">Retired</option>
+                                            <option value="student">Student</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="line half" style="margin-top: 20px;">
+                                    <div class="input">
+                                        <label for="">Current Annual Household Income</label>
+                                        <select name="annualIncome" id="">
+                                            <option disabled selected value>Select..</option>
+                                            <option value="one"><$25000</option>
+                                            <option value="two">$25000-$49999</option>
+                                            <option value="three">$50000-$74999</option>
+                                            <option value="four">$75000-$99999</option>
+                                            <option value="five">$100000-$149999</option>
+                                        </select>
+                                    </div>
+                                    <div class="input">
+                                        <label for="">Current Net Worth</label>
+                                        <select name="netWorth" id="">
+                                            <option disabled selected value>Select..</option>
+                                            <option value="one"><$25000</option>
+                                            <option value="two">$25000-$49999</option>
+                                            <option value="three">$50000-$99999</option>
+                                            <option value="four">$100000-$249999</option>
+                                            <option value="five">$249999-$499999</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="line full" style="margin-top: 30px;">
+                                    <div class="input" style="display: block;">
+                                        <label for="">Are you associated with a stock broker?</label>
+                                        <input class="checkbox" type="checkbox" name="stockBroker" value="Yes">Yes
+                                        <input class="checkbox" type="checkbox" name="stockBroker" value="No">No
+                                    </div>
+                                </div>
+                                <input class="submit-button" type="submit" value="Save">
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="assistance">
+                        <div class="help-logo">
+                            <img src="" alt="">
+                        </div>
+                        <div class="help-text">
+                            For assistance, call <b>(833) 822-7435</b> or text <b>(305) 407-0276</b> or email <b>invest@cardonecapital.com</b>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="right"></div>
+        </div>
+    </div>
+
+</body>
+</html>

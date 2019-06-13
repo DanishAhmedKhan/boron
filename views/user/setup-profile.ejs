@@ -21,7 +21,7 @@
     }
 
     .main .stage .element {
-        width: 180px;
+        width: 225px;
         margin: 0 20px;
         border: 1px solid black;
         padding: 15px 25px;
@@ -30,6 +30,7 @@
     .main .stage .element .text {
         font-size: 18px;
         font-weight: bold;
+        text-align: center;
     }
 
     .main .stage .element .tick {
@@ -45,22 +46,32 @@
         width: 100%;
     }
 
+    .grid {
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 40px;
+        grid-row-gap: 20px;
+
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
     .form .element {
-        width: 100%;
-        margin: 8px 0;
+        
     }
 
     .form .element .label {
         font-size: 16px;
         font-weight: bold;
         display: block;
-        margin-bottom: 4px;
+        margin-bottom: 5px;
     }
 
     .form .element .input {
-        padding: 5px 10px;
-        font-size: 14px;
-        width: 300px;
+        padding: 7px 10px;
+        font-size: 16px;
+        width: 100%;
     }
 
     .agreement-heading {
@@ -95,11 +106,11 @@
                 <div class="tick"></div>
             </div>
             <div class="element">
-                <div class="text">Create Account</div>
+                <div class="text">Complete Profile</div>
                 <div class="tick"></div>
             </div>
             <div class="element">
-                <div class="text">Create Account</div>
+                <div class="text">Start Investing</div>
                 <div class="tick"></div>
             </div>
         </div>
@@ -108,30 +119,34 @@
         </div>
         <form class="form" action="/profile" method="POST">
             <input type="hidden" name="_id" value="<%= user._id %>">
-            <div class="element">
-                <label class="label" for="">Address</label>
-                <input class="input" type="text" name="address" autocomplete="off">
+
+            <div class="grid">
+                <div class="element">
+                    <label class="label" for="">Address</label>
+                    <input class="input" type="text" name="address" autocomplete="off">
+                </div>
+                <div class="element">
+                    <label class="label" for="">City</label>
+                    <input class="input" type="text" name="city" autocomplete="off">
+                </div>
+                <div class="element">
+                    <label class="label" for="">Postal Code</label>
+                    <input class="input" type="text" name="zip" autocomplete="off">
+                </div>
+                <div class="element">
+                    <label class="label" for="">Country</label>
+                    <input class="input" type="text" name="country" autocomplete="off">
+                </div>
+                <div class="element">
+                    <label class="label" for="">State</label>
+                    <input class="input" type="text" name="state" autocomplete="off">
+                </div>
+                <div class="element">
+                    <label class="label" for="">Primary Phone</label>
+                    <input class="input" type="text" name="phone" autocomplete="off">
+                </div>
             </div>
-            <div class="element">
-                <label class="label" for="">City</label>
-                <input class="input" type="text" name="city" autocomplete="off">
-            </div>
-            <div class="element">
-                <label class="label" for="">Postal Code</label>
-                <input class="input" type="text" name="zip" autocomplete="off">
-            </div>
-            <div class="element">
-                <label class="label" for="">Country</label>
-                <input class="input" type="text" name="country" autocomplete="off">
-            </div>
-            <div class="element">
-                <label class="label" for="">State</label>
-                <input class="input" type="text" name="state" autocomplete="off">
-            </div>
-            <div class="element">
-                <label class="label" for="">Primary Phone</label>
-                <input class="input" type="text" name="phone" autocomplete="off">
-            </div>
+            
             <div class="element">
                 <div class="label" class="text">
                     Are you an accredited investor or do you invest on behalf of an accredited investing entity 

@@ -40,11 +40,12 @@ exports.postSignup = async (req, res) => {
     req.session.user = user;
     req.session.save(err => {
         console.log(err);
-        if (profileStatus == 1)
-            res.redirect('/profile');
-        else if (profileStatus == 2) 
-            res.redirect('/accessInvestorPortal');
-        else res.redirect('/');
+        //if (profileStatus == 1)
+            //res.redirect('/profile');
+        //else if (profileStatus == 2) 
+            //res.redirect('/accessInvestorPortal');
+        //else 
+        res.redirect('/profile');
     });
 }
 

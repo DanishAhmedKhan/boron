@@ -77,20 +77,26 @@ exports.invesment = async (req, res) => {
         if (err) return console.log(err);
     });
 
-    const check = await User.findOne({ 
+    const check = await User.findOne({
         _id: req.session.user._id, 
-        'invesments.id': req.query.id,
-    }, '_id');
+        'invesments.invesmentPropertyId': req.query.id,
+    }, { _id: 0, invesments: { $elemMatch: { invesmentPropertyId: req.query.id } } });
 
-    console.log(check);
-
-    console.log('USER INVESTED ? ', check != null);
+    if (check != null) {
+        var step = check.invesments[0].step, reviewLink;
+        if (step == 1) {
+            reviewLink = '/investorVerification';
+        } else if (step == 2) {
+            reviewLink = '/documents';
+        }
+    }
 
     res.render('user/invesment', {
         pageTitle: 'Invesment',
         isAuthenticated: req.session.isLoggedIn,
         invesment: invesment,
         hasUserInvested: (check != null),
+        reviewLink,
     });
 };
 
@@ -130,14 +136,15 @@ exports.postOfferSubmission = async (req, res) => {
         invesmentProperty: { name: req.session.invesmentPropertyName },
         invesmentCommited: req.body.invesmentCommited,
         phoneNumber: req.body.phoneNumber,
-        invesmentEntity: req.body.invesmentEntity,
+        investingEntity: req.body.investingEntity,
     });
     userInvesment.save();
 
     await User.updateOne({ _id: req.session.user._id }, {
         $push: {
             invesments: {
-                id: userInvesment._id,
+                invesmentPropertyId: req.session.invesmentPropertyId,
+                userInvesmentId: userInvesment._id,
                 step: 1,
             }
         },
@@ -231,6 +238,7 @@ exports.documents = async (req, res) => {
         pageTitle: 'Documents',
         isAuthenticated: req.session.isLoggedIn,
         userId: req.session.user._id,
+        invesmentId: req.session.invesmentPropertyId,
         error: error,
     });
 };
@@ -278,6 +286,7 @@ exports.investorVerification = async (req, res) => {
     res.render('user/investorVerification', {
         pageTitle: 'Investor Verification',
         isAuthenticated: req.session.isLoggedIn,
+        invesmentId: req.session.invesmentPropertyId,
         invesmentName: req.session.invesmentPropertyName,
         userId: req.session.user._id,
         userName: req.session.user.name,
@@ -341,7 +350,7 @@ exports.myTransactions = async (req, res) => {
     const { invesments } = await User.findOne({ _id: req.session.user._id }, 'invesments');
 
     for (let i = 0; i < invesments.length; i++) {
-        const inv = await UserInvesment.findOne({ _id: invesments[i].id },
+        const inv = await UserInvesment.findOne({ _id: invesments[i].userInvesmentId },
             'invesmentProperty invesmentCommited investingEntity');
 
         let step = invesments[i].step;

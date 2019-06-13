@@ -41,7 +41,8 @@ const userSchema = new Schema({
     }],
     invesments: [{
         _id: false,
-        id: ObjectId,
+        invesmentPropertyId: ObjectId,
+        userInvesmentId: ObjectId,
         step: Number,
     }]
 });

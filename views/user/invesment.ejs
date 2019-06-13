@@ -108,8 +108,12 @@
             <div class="right">
                 <div class="name"><%= invesment.name %></div>
                 <% if (hasUserInvested) { %>
-                    <a href="/offerSubmission?id=<%= invesment._id %>"><div class="button">Review In Progress Offer</div></a>
-                    <a href="/offerSubmission?id=<%= invesment._id %>"><div class="button">Invest Again</div></a>
+                    <a href="<%= reviewLink %>">
+                        <div style="margin-bottom: 10px;" class="button">Review In Progress Offer</div>
+                    </a>
+                    <a href="/offerSubmission?id=<%= invesment._id %>">
+                        <div class="button">Invest Again</div>
+                    </a>
                 <% } else { %>
                     <a href="/offerSubmission?id=<%= invesment._id %>"><div class="button">Invest Now</div></a>
                 <% } %>
@@ -120,7 +124,7 @@
                     </div>
                     <div class="element">
                         <div class="left">Targeted Property Cash:</div>
-                        <div class="right"><%= invesment.targetedInvesmentCashFlow %></div>
+                        <div class="right"><%= invesment.targetedPropertyCashFlow %></div>
                     </div>
                     <div class="element">
                         <div class="left">Distributions:</div>

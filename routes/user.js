@@ -40,6 +40,7 @@ router.post('/initializeInvesment', async (req, res) => {
         targetedHoldingPeriod: 10,
         fundSize: 500,
         invesmentStructure: 'google',
+        distributions: 'monthly',
         documents: [
             {
                 name: 'asda',
@@ -68,6 +69,7 @@ router.post('/initializeInvesment', async (req, res) => {
         targetedHoldingPeriod: 5,
         fundSize: 500,
         invesmentStructure: 'apple',
+        distributions: 'monthly',
         documents: [
             {
                 name: 'asda',

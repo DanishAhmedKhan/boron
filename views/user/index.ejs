@@ -41,6 +41,7 @@
         padding: 5px 15px;
     }
     .main .content .invesments .element .list {
+        width: 100%;
         border-bottom: 1px solid rgba(0, 0, 0, .3);
         padding-top: 8px;
         padding-bottom: 8px;
@@ -49,12 +50,18 @@
         border-bottom: none;
     }
     .main .content .invesments .element .list .left {
+        display: inline-block;
+        width: 70%;
         text-align: left;
         color: black;
     }
     .main .content .invesments .element .list .right {
+        display: inline-block;
+        width: 27%;
         text-align: right;
         color: black;
+        font-weight: bold;
+        text-transform: capitalize;
     }
     .main .content .invesments .element .button {
         font-size: 18px;
@@ -63,7 +70,7 @@
         color: black;
         background-color: white;
         border: 1px solid rgba(0, 0, 0, .5);
-        padding: 5px;
+        padding: 8px;
         margin: 5px 15px;
         margin-bottom: 15px;
     }
@@ -88,7 +95,7 @@
                         <div class="details">
                             <div class="list">
                                 <span class="left">Minimum Invesments</span>
-                                <span class="right"><%= invesments[i].minimumInvesment %></span>
+                                <span class="right">$<%= invesments[i].minimumInvesment %></span>
                             </div>
                             <div class="list">
                                 <span class="left">Targeted Property Cash Flow</span>
@@ -96,7 +103,7 @@
                             </div>
                             <div class="list">
                                 <span class="left">Distributions</span>
-                                <span class="right"><%= invesments[i].distribution %></span>
+                                <span class="right"><%= invesments[i].distributions %></span>
                             </div>
                             <div class="list">
                                 <span class="left">Targeted Hold Period</span>

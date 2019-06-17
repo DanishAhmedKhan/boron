@@ -29,6 +29,8 @@
     }
     .content .left .header .image-box {
         width: 25%;
+        height: 130px;
+        overflow: hidden;
     }
     .content .left .header .image-box .image {
         width: 100%;
@@ -38,7 +40,7 @@
         padding-left: 60px;
     }
     .content .left .header .text .name {
-        font-size: 28px;
+        font-size: 32px;
         font-weight: bold;
         text-transform: uppercase;
     }
@@ -100,6 +102,19 @@
         padding: 8px 10px;
         font-size: 16px;
         margin-bottom: 8px;
+    }
+    .content .left .form-box .input-box .currency {
+        width: 35px;
+        background-color: #a9a9a9;
+        margin-bottom: 8px;
+        text-align: center;
+        line-height: 100%;
+        padding: 10px 0;
+        font-weight: bold;
+        color: black;
+    }
+    .content .left .form-box .input-box .input-currency {
+        width: calc(70% - 35px);
     }
     .content .left .form-box .input-box .sub {
         font-size: 14px;
@@ -394,8 +409,13 @@
 
                         <div class="input-box">
                             <label for="">InvesmentCommited</label>
-                            <input type="text" name="invesmentCommited" autocomplete="off">
-                            <div class="sub">Minimum of $6000</div>
+
+                            <div class="money-box" style="display:flex;">
+                                <div class="currency">$</div>
+                                <input class="input-currency" type="text" name="invesmentCommited" autocomplete="off">
+                            </div>
+                            
+                            <div class="sub">Minimum of $<%= minimumInvesment %></div>
                         </div>
                         <div class="input-box">
                             <label for="">Phone Number</label>
@@ -526,11 +546,6 @@
                     console.log(e.responseText); 
                 }
             });
-        });
-
-        // checkbox toggle
-        $('input[type="checkbox"]').on('change', function() {
-            $('input[type="checkbox"]').not(this).prop('checked', false);
         });
 
         // serialize form data 

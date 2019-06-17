@@ -23,8 +23,13 @@
     .main .stage .element {
         width: 225px;
         margin: 0 20px;
-        border: 1px solid black;
+        border: 1px solid #f89509;
         padding: 15px 25px;
+        background-color: rgb(254, 245, 232);
+    }
+
+    .main .stage .element-on {
+        background-color: rgb(252, 202, 133);
     }
 
     .main .stage .element .text {
@@ -81,20 +86,58 @@
     }
 
     .submit-button {
+        display: inline;
         width: 300px;
         margin: 15px auto;
-        padding: 10px 0;
+        margin-top: 25px;
+        padding: 13px 0;
         font-size: 16px;
-        color: black;
+        color: white;
         font-weight: bold;
         text-transform: uppercase;
+        background-color: #2e9910;
+        border: none;
+        border-radius: 2px;
+        transition: all .2s;
+        cursor: pointer;
+    }
+
+    .submit-button:hover {
+        background-color: #15300e;
+    }
+
+    .link, .link:visited {
+        color: rgb(248, 149, 9) !important;
+        text-decoration: none;
+    }
+
+    .primary-text {
+        font-size: 16px;
+        line-height: 1.4; 
+    }
+
+    .assistance {
+        padding: 14px 0;
+        display: flex;
+        margin-bottom: 40px;
+        margin-top: 20px;
+        width: 100%;
+        background-color: rgb(254, 245, 232);
+        border: 1px solid #f89509;
+    }
+    .assistance .help-logo {
+        
+    }
+    .assistance .help-text {
+        padding-left: 60px;
+        font-size: 18px;
     }
 </style>
 
 </head>
 <body>
     
-    <%- include('../includes/navigation') %>
+    <%- include('../includes/navigation-no-link') %>
 
     <div class="main">
         <div class="heading">
@@ -105,7 +148,7 @@
                 <div class="text">Create Account</div>
                 <div class="tick"></div>
             </div>
-            <div class="element">
+            <div class="element element-on">
                 <div class="text">Complete Profile</div>
                 <div class="tick"></div>
             </div>
@@ -149,7 +192,8 @@
             
             <div class="element">
                 <div class="label" class="text">
-                    Are you an accredited investor or do you invest on behalf of an accredited investing entity 
+                    Are you an accredited investor or do you invest on behalf of an accredited investing entity?
+                    (<a href="" class="link">View Definition</a>)
                 </div>
                 <input class="radio" type="radio" name="accreditedInvestor" value="true">Yes<br>
                 <input class="radio" type="radio" name="accreditedInvestor" value="false">No
@@ -163,6 +207,16 @@
             </div>
             <input class="submit-button" type="submit" value="Submit and proceed">
         </form>
+
+        <div class="assistance">
+            <div class="help-logo">
+                <img src="" alt="">
+            </div>
+            <div class="help-text">
+                For assistance, call <b>(833) 822-7435</b> or text <b>(305) 407-0276</b> or email <b>invest@cardonecapital.com</b>
+            </div>
+        </div>
+
     </div>
 
 </body>

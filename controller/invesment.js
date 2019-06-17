@@ -114,6 +114,7 @@ exports.offerSubmission = async (req, res) => {
         isAuthenticated: req.session.isLoggedIn,
         invesmentId: invesment._id,
         invesmentName: invesment.name,
+        minimumInvesment: invesment.minimumInvesment,
         userId: req.session.user._id,
         userEntity: invesmentEntity,
         error: error,
